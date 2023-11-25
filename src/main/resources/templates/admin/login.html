@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Consurso de materiales educativos</title>
+</head>
+<body>
+    <h1>Iniciar sesion</h1>
+    <div th:if="${param.error}">
+        Invalid username and password.
+    </div>
+    <form th:action="@{/admin/login}" method="post">
+        <label>Correo electronico: <input type="email" name="email"></label>
+        <label>Contraseña: <input type="password" name="password"></label>
+        <button type="submit">Inicar sesion</button>
+    </form>
+</body>
+</html>
