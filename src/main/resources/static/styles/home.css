@@ -1,0 +1,41 @@
+.home-section {
+    margin-top: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: var(--gray-bg-color);
+}
+
+.home-section > div {
+    display: flex;
+}
+
+.home-section img {
+    width: 40%;
+    max-width: 350px;
+    margin-right: 50px;
+    object-fit: contain;
+}
+.home-section .content {
+    margin-top: 30px;
+}
+
+.home-section .content h1 {
+    color: var(--gray-text-color);
+    font-weight: 500;
+}
+
+.home-section .content p {
+    margin-top: 15px;
+
+    color: var(--gray-text-color);
+    line-height: 26px;
+    font-weight: 300;
+}
+
+@media only screen and (max-device-width : 960px) {
+    .home-section img {
+        display: none;
+    }
+}
