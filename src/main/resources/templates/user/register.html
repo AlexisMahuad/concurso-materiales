@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Consurso de materiales educativos</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" th:href="@{/styles/main.css}">
+    <link rel="stylesheet" th:href="@{/styles/login.css}">
+
+    <!-- FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;700&family=Merriweather+Sans:wght@300;400&family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <section class="login-section">
+        <div class="login-modal">
+            <img th:src="@{/images/logo-ced.png}" alt="CED concurso educación digital">
+            <form class="login-form" th:object="${user}" th:action="@{/register}" method="post">
+                <h1>Registrarse en el sistema</h1>
+                <label>Correo electronico: <input type="email" th:field="*{email}" name="email"></label>
+                <span class="validationError"
+                      th:if="${#fields.hasErrors('email')}"
+                      th:errors="*{email}">Name Error</span>
+                <label>Contraseña: <input type="password" th:field="*{password}" name="password"></label>
+                <span class="validationError"
+                      th:if="${#fields.hasErrors('password')}"
+                      th:errors="*{password}">Name Error</span>
+                <div class="login-error" th:if="${param.exist}">Ya existe este email registrado</div>
+                <button class="button" type="submit">Registrarse</button>
+            </form>
+        </div>
+    </section>
+</body>
+</html>
