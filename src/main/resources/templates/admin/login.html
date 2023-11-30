@@ -15,15 +15,16 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;700&family=Merriweather+Sans:wght@300;400&family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <section class="login-section">
-        <div class="login-modal">
+    <section class="auth-section">
+        <div class="auth-modal">
             <img th:src="@{/images/logo-ced.png}" alt="CED concurso educación digital">
-            <form class="login-form" th:action="@{/admin/login}" method="post">
+            <form class="auth-form" th:action="@{/admin/login}" method="post">
                 <h1>Ingresar al sistema</h1>
-                <p>Ingresa con tu cuenta institucional</p>
+                <h2>Ingresa con tu cuenta institucional</h2>
+                <div class="alert success" th:if="${param.logout}">Has cerrado sesión exitosamente.</div>
                 <label>Correo electronico: <input type="email" name="email"></label>
                 <label>Contraseña: <input type="password" name="password"></label>
-                <div class="login-error" th:if="${param.error}">Email o contraseña incorrecta</div>
+                <div class="alert danger" th:if="${param.error}">Email o contraseña incorrecta</div>
                 <button class="button" type="submit">Iniciar sesión</button>
             </form>
         </div>

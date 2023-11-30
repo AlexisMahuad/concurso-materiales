@@ -15,20 +15,25 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;700&family=Merriweather+Sans:wght@300;400&family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <section class="login-section">
-        <div class="login-modal">
+    <section class="auth-section">
+        <div class="auth-modal">
             <img th:src="@{/images/logo-ced.png}" alt="CED concurso educación digital">
-            <form class="login-form" th:object="${user}" th:action="@{/register}" method="post">
+            <form class="auth-form" th:object="${user}" th:action="@{/register}" method="post">
                 <h1>Registrarse en el sistema</h1>
-                <label>Correo electronico: <input type="email" th:field="*{email}" name="email"></label>
-                <span class="validationError"
-                      th:if="${#fields.hasErrors('email')}"
-                      th:errors="*{email}">Name Error</span>
-                <label>Contraseña: <input type="password" th:field="*{password}" name="password"></label>
-                <span class="validationError"
-                      th:if="${#fields.hasErrors('password')}"
-                      th:errors="*{password}">Name Error</span>
-                <div class="login-error" th:if="${param.exist}">Ya existe este email registrado</div>
+                <label>
+                    Correo electronico: <input type="email" th:field="*{email}" th:classappend="${#fields.hasErrors('email')} ? 'error' : ''" name="email">
+                    <span class="validation-error"
+                          th:if="${#fields.hasErrors('email')}"
+                          th:errors="*{email}">Email error</span>
+                </label>
+                <label>
+                    Contraseña: <input type="password" th:field="*{password}" th:classappend="${#fields.hasErrors('password')} ? 'error' : ''" name="password">
+                    <span class="validation-error"
+                          th:if="${#fields.hasErrors('password')}"
+                          th:errors="*{password}">Password error</span>
+                </label>
+                <div class="alert danger" th:if="${param.exist}">Ya existe este email registrado</div>
+                <p class="redirect">Ya tienes una cuenta? <a href="/login">Inicia sesión</a></p>
                 <button class="button" type="submit">Registrarse</button>
             </form>
         </div>

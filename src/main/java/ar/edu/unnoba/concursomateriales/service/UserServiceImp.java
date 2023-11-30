@@ -1,4 +1,5 @@
 package ar.edu.unnoba.concursomateriales.service;
+
 import ar.edu.unnoba.concursomateriales.model.User;
 import ar.edu.unnoba.concursomateriales.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,7 +9,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
-public class UserServiceImp implements UserService{
+public class UserServiceImp implements UserService {
 
     private final UserRepository repository;
 

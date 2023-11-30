@@ -2,8 +2,6 @@ package ar.edu.unnoba.concursomateriales.model;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -21,19 +19,17 @@ public class User implements UserDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Email(message = "Ingresa un correo electronico válido", regexp = "^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$")
+    @Email(message = "Ingrese un correo electronico válido", regexp = "^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$")
     private String email;
 
-    @NotEmpty(message = "Ingresar una contraseña")
+    @NotEmpty(message = "Ingrese una contraseña")
     private String password;
 
     public User(String email, String password) {
         this.email = email;
         this.password = password;
     }
-    public User() {
-    }
-
+    public User() {}
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

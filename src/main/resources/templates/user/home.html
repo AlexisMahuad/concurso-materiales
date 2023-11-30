@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -23,7 +23,8 @@
             <li><a href="#">Convocatoria</a></li>
             <li><a href="#">Ver materiales presentados</a></li>
             <li><a href="#">Contacto</a></li>
-            <li><form class="logout-button" th:action="@{/logout}" method="post"><input type="submit" class="button" value="Cerrar sesión" /></form></li>
+            <li sec:authorize="isAuthenticated()"><form class="logout-button" th:action="@{/logout}" method="post"><input type="submit" class="button" value="Cerrar sesión" /></form></li>
+            <li sec:authorize="isAnonymous()"><form class="logout-button" th:action="@{/login}" method="get"><input type="submit" class="button" value="Iniciar sesión" /></form></li>
         </ul>
         <button class="nav-toggle-button" value="OFF" onclick="toggle(this)">
             <span class="icon-bar"></span>

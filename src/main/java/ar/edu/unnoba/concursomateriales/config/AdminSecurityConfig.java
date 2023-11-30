@@ -24,7 +24,7 @@ public class AdminSecurityConfig {
     }
 
     public void addViewControllers(ViewControllerRegistry registry) {
-        registry.addViewController("/admin/home").setViewName("admin/home");
+        registry.addViewController("/admin/").setViewName("admin/home");
     }
 
     @Bean
