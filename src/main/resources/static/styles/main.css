@@ -6,6 +6,7 @@
     --orange-color: #EEB72B;
     --purple-color: #5B14B7;
     --green-color: #8CD147;
+    --light-green-color: #F4FBED;
     --light-gray-color: #A0A0A0;
     --red-color: #ff3838;
     --light-red-color: #fff5f5;
@@ -165,5 +166,37 @@ nav img {
     }
 }
 
+/* ***** ALERTS ******/
+.alert {
+    margin-bottom: 20px;
+    padding: 10px 15px;
 
+    border-radius: 2px;
+    font-size: var(--text-size-medium);
+}
+
+.alert.danger {
+    background: var(--light-red-color);
+    border: 1px solid var(--red-color);
+    color: var(--red-color);
+}
+
+.alert.success {
+    background: var(--light-green-color);
+    border: 1px solid var(--green-color);
+    color: var(--green-color);
+}
+
+/* ***** VALIDATION ERROR ***** */
+.validation-error {
+    margin-top: 5px;
+
+    color: var(--red-color);
+    font-size: var(--text-size-medium);
+}
+
+input.error {
+    background: var(--light-red-color) !important;
+    border: 1px solid var(--red-color) !important;
+}
 

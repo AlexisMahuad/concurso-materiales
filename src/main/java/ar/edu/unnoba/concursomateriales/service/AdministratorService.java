@@ -5,4 +5,5 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 
 public interface AdministratorService extends UserDetailsService {
     Administrator create(Administrator admin);
+
 }
