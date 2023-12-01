@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <title>Consurso de materiales educativos</title>
+    <title>Concurso de materiales educativos</title>
 
     <!-- CSS -->
     <link rel="stylesheet" th:href="@{/styles/main.css}">
-    <link rel="stylesheet" th:href="@{/styles/home.css}">
+    <link rel="stylesheet" th:href="@{/styles/material.css}">
 
     <!-- FONTS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -33,13 +33,29 @@
         </button>
     </nav>
 
-    <section class="home-section container-center">
+    <section class="new-material-section container-center">
+        <h1>Crear un nuevo material</h1>
         <div>
-            <img th:src="@{/images/logo-ced.png}" alt="CED Concurso educación digital ">
-            <div class="content">
-                <h1>II Concurso de materiales educativos</h1>
-                <p>La Dirección de Educación a Distancia y Digital de la Universidad Nacional del Noroeste de la Provincia de Buenos Aires (UNNOBA), en colaboración con la Universidad Nacional de San Antonio de Areco (UNSA) y la Universidad Provincial de Ezeiza, te invita al II Concurso de Materiales Educativos Digitales Innovadores.</p>
+            <div class="drag-and-drop">
+<!--                Suelte una imagen aquí <br>-->
+<!--                o-->
+<!--                <button>Ingrese una imagen</button>-->
             </div>
+            <form th:object="${material}" th:action="@{/material/new}" method="post">
+                <label>
+                    Nombre:<input type="text" th:field="*{name}" th:classappend="${#fields.hasErrors('name')} ? 'error' : ''" name="name">
+                    <span class="validation-error"
+                          th:if="${#fields.hasErrors('name')}"
+                          th:errors="*{name}">Name error</span>
+                </label>
+                <label>
+                    Descripcion:<textarea th:field="*{description}" th:classappend="${#fields.hasErrors('description')} ? 'error' : ''" name="description"></textarea>
+                    <span class="validation-error"
+                          th:if="${#fields.hasErrors('description')}"
+                          th:errors="*{description}">Description error</span>
+                </label>
+                <button type="submit" class="button">Crear material</button>
+            </form>
         </div>
     </section>
 

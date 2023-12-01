@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <title>Consurso de materiales educativos</title>
+    <title>Concurso de materiales educativos</title>
 
     <!-- CSS -->
     <link rel="stylesheet" th:href="@{/styles/main.css}">
-    <link rel="stylesheet" th:href="@{/styles/home.css}">
+    <link rel="stylesheet" th:href="@{/styles/material.css}">
 
     <!-- FONTS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500&family=Merriweather+Sans:wght@300;400&family=Merriweather:wght@300;400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;700&family=Merriweather+Sans:wght@300;400&family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <nav class="container-center">
@@ -33,12 +33,20 @@
         </button>
     </nav>
 
-    <section class="home-section container-center">
-        <div>
-            <img th:src="@{/images/logo-ced.png}" alt="CED Concurso educación digital ">
-            <div class="content">
-                <h1>II Concurso de materiales educativos</h1>
-                <p>La Dirección de Educación a Distancia y Digital de la Universidad Nacional del Noroeste de la Provincia de Buenos Aires (UNNOBA), en colaboración con la Universidad Nacional de San Antonio de Areco (UNSA) y la Universidad Provincial de Ezeiza, te invita al II Concurso de Materiales Educativos Digitales Innovadores.</p>
+    <section class="materials-section container-center">
+        <h1>Materiales presentados</h1>
+        <h2>Si desea votar por alguno de los materiales, click en el enlace y encotrara la opción de votar por ese material</h2>
+        <div class="materials">
+            <div th:each="material : ${materials}">
+                <a th:href="${'/material/' + material.getId()}">
+                    <div class="material">
+                        <div class="image"></div>
+                        <div class="content">
+                            <h4 th:text="${material.getName()}"></h4>
+                            <p th:text="${material.getDescription()}"></p>
+                        </div>
+                    </div>
+                </a>
             </div>
         </div>
     </section>

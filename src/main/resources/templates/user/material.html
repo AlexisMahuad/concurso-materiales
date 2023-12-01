@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <title>Consurso de materiales educativos</title>
+    <title>Concurso de materiales educativos</title>
 
     <!-- CSS -->
     <link rel="stylesheet" th:href="@{/styles/main.css}">
-    <link rel="stylesheet" th:href="@{/styles/home.css}">
+    <link rel="stylesheet" th:href="@{/styles/material.css}">
 
     <!-- FONTS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500&family=Merriweather+Sans:wght@300;400&family=Merriweather:wght@300;400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;700&family=Merriweather+Sans:wght@300;400&family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <nav class="container-center">
@@ -33,12 +33,15 @@
         </button>
     </nav>
 
-    <section class="home-section container-center">
+    <section class="material-section container-center" th:object="${material}">
+        <h1 th:text="${material.getName()}"></h1>
         <div>
-            <img th:src="@{/images/logo-ced.png}" alt="CED Concurso educación digital ">
-            <div class="content">
-                <h1>II Concurso de materiales educativos</h1>
-                <p>La Dirección de Educación a Distancia y Digital de la Universidad Nacional del Noroeste de la Provincia de Buenos Aires (UNNOBA), en colaboración con la Universidad Nacional de San Antonio de Areco (UNSA) y la Universidad Provincial de Ezeiza, te invita al II Concurso de Materiales Educativos Digitales Innovadores.</p>
+            <div class="material-image"></div>
+            <div class="material-information">
+                <h2>Información del material</h2>
+                <h3>Descripción</h3>
+                <p th:text="${material.getDescription()}"></p>
+                <button class="button">Votar por este material</button>
             </div>
         </div>
     </section>

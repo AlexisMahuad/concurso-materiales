@@ -27,6 +27,7 @@ public class UserSecurityConfig {
                 .userDetailsService(userService)
                 .authorizeHttpRequests((requests) -> requests
                         .requestMatchers("/","/webjars/", "/resources/","/css/**").permitAll()
+                        .requestMatchers("/material/new", "/material/user").hasAuthority("ROLE_USER")
                         .requestMatchers("/**").permitAll()
                 )
                 .formLogin((form) -> form
