@@ -16,20 +16,21 @@
 </head>
 <body>
     <nav class="container-center">
-        <img th:src="@{/images/logo-nav.png}" alt="CED concurso educacion digital">
+        <a href="/admin/home"><img th:src="@{/images/logo-nav.png}" alt="CED concurso educacion digital"></a>
         <ul class="nav-links">
-            <li><a href="#">Acerca del CED</a></li>
-            <li><a href="#">Convocatoria</a></li>
-            <li><a href="#">Ver materiales presentados</a></li>
-            <li><a href="#">Contacto</a></li>
+            <li><button class="button gray" onclick="actionsToggle()">Menú de acciones</button></li>
             <li><form class="logout-button" th:action="@{/admin/logout}" method="post"><input type="submit" class="button" value="Cerrar sesión" /></form></li>
         </ul>
-        <button class="nav-toggle-button" value="OFF" onclick="toggle(this)">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-        </button>
+        <ul class="actions-menu container-center">
+            <li><a href="#">Asignar material a un evaluador</a></li>
+            <li><a href="#">Listado de materiales pendientes de evaluación</a></li>
+            <li><a href="#">Materiales ya evaluados</a></li>
+            <li><a href="/admin/material/pending">Materiales pendientes de revisión</a></li>
+            <li><a href="/admin/material">Materiales aprobados</a></li>
+            <li><a href="#">Estado de la votación</a></li>
+        </ul>
     </nav>
+
     <section class="home-section container-center">
         <div>
             <img th:src="@{/images/logo-ced.png}" alt="">
@@ -39,16 +40,9 @@
             </div>
         </div>
     </section>
+
     <script>
-        function toggle(button) {
-            if (button.value === "ON") {
-                button.value = "OFF"
-                document.querySelector(".nav-links").classList.remove("active");
-            } else {
-                button.value = "ON"
-                document.querySelector(".nav-links").classList.add("active");
-            }
-        }
+        function actionsToggle() { document.querySelector(".actions-menu").classList.toggle("active"); }
     </script>
 </body>
 </html>

@@ -25,6 +25,9 @@ public class User implements UserDetails {
     @NotEmpty(message = "Ingrese una contraseña")
     private String password;
 
+    @OneToOne(mappedBy = "owner")
+    private Material material;
+
     public User(String email, String password) {
         this.email = email;
         this.password = password;

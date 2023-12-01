@@ -1,5 +1,4 @@
 .home-section {
-    margin-top: 100px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -22,13 +21,11 @@
 }
 
 .home-section .content h1 {
-    color: var(--gray-text-color);
-    font-weight: 500;
+    margin-bottom: 5px;
+    font-size: var(--text-size-x-large);
 }
 
 .home-section .content p {
-    margin-top: 15px;
-
     color: var(--gray-text-color);
     line-height: 26px;
     font-weight: 300;

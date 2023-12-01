@@ -11,14 +11,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import java.security.Principal;
 
 @Controller
-@RequestMapping(path = "/")
-public class UserController implements WebMvcConfigurer {
-
+@RequestMapping("/")
+public class UserController {
 
     private final UserService userService;
 

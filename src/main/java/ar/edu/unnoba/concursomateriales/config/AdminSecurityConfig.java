@@ -10,7 +10,6 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 
 @Configuration
 @Order(1)
@@ -21,10 +20,6 @@ public class AdminSecurityConfig {
     @Autowired
     public AdminSecurityConfig(@Lazy AdministratorService adminService) {
         this.adminService = adminService;
-    }
-
-    public void addViewControllers(ViewControllerRegistry registry) {
-        registry.addViewController("/admin/").setViewName("admin/home");
     }
 
     @Bean
