@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Concurso de materiales educativos</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" th:href="@{/styles/main.css}">
+    <link rel="stylesheet" th:href="@{/styles/material.css}">
+
+    <!-- FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500&family=Merriweather+Sans:wght@300;400&family=Merriweather:wght@300;400&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="container-center">
+        <a href="/"><img th:src="@{/images/logo-nav.png}" alt="CED concurso educacion digital"></a>
+        <ul class="nav-links">
+            <li><a href="#">Acerca del CED</a></li>
+            <li><a href="/material/user">Participar</a></li>
+            <li><a href="#">Convocatoria</a></li>
+            <li><a href="/material">Ver materiales presentados</a></li>
+            <li><a href="#">Contacto</a></li>
+            <li sec:authorize="isAuthenticated()"><form class="logout-button" th:action="@{/logout}" method="post"><input type="submit" class="button" value="Cerrar sesión" /></form></li>
+            <li sec:authorize="isAnonymous()"><form class="logout-button" th:action="@{/login}" method="get"><input type="submit" class="button" value="Iniciar sesión" /></form></li>
+        </ul>
+        <button class="nav-toggle-button"onclick="toggleNavLinks()">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+    </nav>
+
+    <section class="new-material-section container-center">
+        <h1>Crear un nuevo material</h1>
+        <div>
+            <div class="drag-and-drop">
+<!--                Suelte una imagen aquí <br>-->
+<!--                o-->
+<!--                <button>Ingrese una imagen</button>-->
+            </div>
+            <form th:object="${material}" th:action="@{/material/new}" method="post">
+                <label>
+                    Nombre:<input type="text" th:field="*{name}" th:classappend="${#fields.hasErrors('name')} ? 'error' : ''" name="name">
+                    <span class="validation-error"
+                          th:if="${#fields.hasErrors('name')}"
+                          th:errors="*{name}">Name error</span>
+                </label>
+                <label>
+                    Descripcion:<textarea th:field="*{description}" th:classappend="${#fields.hasErrors('description')} ? 'error' : ''" name="description"></textarea>
+                    <span class="validation-error"
+                          th:if="${#fields.hasErrors('description')}"
+                          th:errors="*{description}">Description error</span>
+                </label>
+                <button type="submit" class="button">Crear material</button>
+            </form>
+        </div>
+    </section>
+
+    <script>
+        function toggleNavLinks(button) { document.querySelector(".nav-links").classList.toggle("active");}
+    </script>
+</body>
+</html>
