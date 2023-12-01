@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Concurso de materiales educativos</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" th:href="@{/styles/main.css}">
+    <link rel="stylesheet" th:href="@{/styles/material.css}">
+
+    <!-- FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;700&family=Merriweather+Sans:wght@300;400&family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="container-center">
+        <a href="/admin/home"><img th:src="@{/images/logo-nav.png}" alt="CED concurso educacion digital"></a>
+        <ul class="nav-links">
+            <li><button class="button gray" onclick="actionsToggle()">Menú de acciones</button></li>
+            <li><form class="logout-button" th:action="@{/admin/logout}" method="post"><input type="submit" class="button" value="Cerrar sesión" /></form></li>
+        </ul>
+        <ul class="actions-menu container-center">
+            <li><a href="#">Asignar material a un evaluador</a></li>
+            <li><a href="#">Listado de materiales pendientes de evaluación</a></li>
+            <li><a href="#">Materiales ya evaluados</a></li>
+            <li><a href="/admin/material/pending">Materiales pendientes de revisión</a></li>
+            <li><a href="/admin/material">Materiales aprobados</a></li>
+            <li><a href="#">Estado de la votación</a></li>
+        </ul>
+    </nav>
+
+    <section class="materials-section container-center">
+        <h1>Materiales aprobados</h1>
+        <div class="materials">
+            <div th:each="material : ${materials}">
+                <div class="material">
+                    <div class="image"></div>
+                    <div class="content">
+                        <h4 th:text="${material.getName()}"></h4>
+                        <p th:text="${material.getDescription()}"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function actionsToggle() { document.querySelector(".actions-menu").classList.toggle("active"); }
+    </script>
+</body>
+</html>
